@@ -1,0 +1,84 @@
+public class DostawcaPaczków {
+	
+	int paczki_ok_1;
+	int paczki_ok_2;
+	
+	static int ilosc_paczkow;
+	
+	public DostawcaPaczków(int paczki_ok_1, int paczki_ok_2)
+	{
+		this.paczki_ok_1 = paczki_ok_1;
+		this.paczki_ok_2 = paczki_ok_2;
+		System.out.println("Dodano pączki dla okienka 1 = " + paczki_ok_1);
+		System.out.println("Dodano pączki dla okienka 2 = " + paczki_ok_2);
+	}
+	
+	private void infoPaczek(String text)
+	{
+		System.out.println("INFO PACZKI: " + text);
+	}
+	
+//	synchronized boolean PaczkiOkno1(Kupujacy kupujacy)
+//	{
+//		ProgramGlowny.ilosc_paczkow = paczki_ok_1;
+//		
+//		if(paczki_ok_1 >= 1)
+//		{
+//			infoPaczek(  " pozostało " + paczki_ok_1 + " paczków");
+//			paczki_ok_1--;
+//			return true;
+//		}
+//		else if (paczki_ok_1 < 0)
+//		{
+//			infoPaczek(" NIEMA PACZKÓW, NIE MA PACzKÓW");
+//		}
+//		return false;
+//	}
+//	
+//	synchronized boolean PaczkiOkno2(Kupujacy kupujacy)
+//	{
+//		ProgramGlowny.ilosc_paczkow = paczki_ok_2;
+//		
+//		if(paczki_ok_2 >= 1)
+//		{
+//			infoPaczek(  " pozostało " + paczki_ok_2 + " paczków");
+//			paczki_ok_2--;
+//			return true;
+//		}
+//		else if (paczki_ok_2<0)
+//		{
+//			infoPaczek(" NIEMA PACZKÓW, NIE MA PACzKÓW");
+//		}
+//		return false;
+//	}
+
+	public void paczki_ok_1()
+	{
+		ProgramGlowny.ilosc_paczkow = paczki_ok_1;
+		
+		if(paczki_ok_1 >= 1)
+		{
+			infoPaczek(  " pozostało " + paczki_ok_1 + " paczków");
+			paczki_ok_1--;
+		}
+		else if (paczki_ok_1 < 0)
+		{
+			infoPaczek(" NIEMA PACZKÓW, NIE MA PACzKÓW");
+		}		
+	}
+	
+	public void paczki_ok_2()
+	{
+		ProgramGlowny.ilosc_paczkow = paczki_ok_2;
+		
+		if(paczki_ok_2 >= 1)
+		{
+			infoPaczek(  " pozostało " + paczki_ok_2 + " paczków");
+			paczki_ok_2--;
+		}
+		else if (paczki_ok_2<0)
+		{
+			infoPaczek(" NIEMA PACZKÓW, NIE MA PACzKÓW");
+		}
+	}
+}
