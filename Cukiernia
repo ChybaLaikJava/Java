@@ -1,20 +1,19 @@
 package uz.zgora.pwir.lab3a;
 
-
 public class Cukiernia 
 {
 	private int wolne_msc_1;
 	private int wolne_msc_2;
 	
-	int paczki_okna;
-	
+	public int paczki_okna;
+
 	public Cukiernia(int wolne_msc_1, int wolne_msc_2, int paczki_okna) 
 	{
 		this.wolne_msc_1 = wolne_msc_1;
 		this.wolne_msc_2 = wolne_msc_2;
 		System.out.println("Cukiernia zaprasza");
 		System.out.println("Wolne miejsca do okienka 1 to " + wolne_msc_1);
-		System.out.println("Wolne miejsca do okienka 2 to " + wolne_msc_2);
+		System.out.println("Wolne miejsca do okienka 2 to " + wolne_msc_2);	
 		
 		this.paczki_okna = paczki_okna;
 		System.out.println("Dodano pączki dla okienek = " + paczki_okna);
@@ -39,6 +38,7 @@ public class Cukiernia
 			wolne_msc_1--;
 			infoPaczek("Sprzedano w oknie 1 pączka. Pozostało " + paczki_okna + " paczków");
 			paczki_okna--;
+			
 			return true;
 		}
 		else
@@ -67,7 +67,7 @@ public class Cukiernia
 	
 	synchronized boolean opuscilCukiernie(Kupujacy kupujacy)
 	{
-		komunikat(kupujacy.getKupujacy()+" Ale się najadł."+ " Pozostało wolnych miejsc " + wolne_msc_1 + " ");
+		komunikat(kupujacy.getKupujacy()+" Ale się najadł."+ " Pozostało wolnych miejsc " + wolne_msc_1 + " " );
 		wolne_msc_1++;
 		return true;
 	}	
