@@ -5,7 +5,6 @@ import java.util.Random;
 public class Kupujacy extends Thread 
 {
 	private Cukiernia cukiernia;
-//	private DostawcaPaczków dostawcaPaczków;
 
 	private String nazwa;
 	private String stan;
@@ -18,6 +17,9 @@ public class Kupujacy extends Thread
 	
 	private int maksCzasJedzenia;
 	private int czasJedzeniaLosuj;
+	
+	static int ilosc_paczkow = 0;
+	private int dodawaniePaczkow;
 
 	public Kupujacy(String kupujacy_name, Cukiernia cukiernia)
 	{
@@ -32,6 +34,11 @@ public class Kupujacy extends Thread
 	private void komunikat(String text)
 	{
 		System.out.println(nazwa+": "+text);
+	}
+	
+	private void info(String text)
+	{
+		System.err.println("DODANO " + text);
 	}
 	
 	public String getKupujacy()
@@ -62,8 +69,18 @@ public class Kupujacy extends Thread
 	{
 		czasJazdyLosuj = maksCzasJazdy;
 		czasJedzeniaLosuj = maksCzasJedzenia;
+		ilosc_paczkow = dodawaniePaczkow;
+
 		while(true){
-			
+			try
+			{
+				info(cukiernia.paczki_okna + " Pączków");
+				sleep(ProgramGlowny.CZAS);
+				cukiernia.paczki_okna++;					
+			} catch (InterruptedException ie)
+			{
+				ie.printStackTrace();
+			} 
 			if(stan=="czekanie"){
 
 				int czas = czasJazdyLosuj;
@@ -115,7 +132,6 @@ public class Kupujacy extends Thread
 				}
 				stan="wychodzenie";
 			}
-			
 			if(stan=="wychodzenie")
 			{
 				komunikat("Chcę wyjść z tej cukierni.");
@@ -128,12 +144,12 @@ public class Kupujacy extends Thread
 						komunikat("wychodze z cukierni. Okno 1 ");
 						stan="czekanie";
 					}
-
-					else 
-					{
-						komunikat("tutaj totalnie nic sie nie dzieje");
-						stan="wychodzenie";
-					}
+								
+//					else 
+//					{
+//						komunikat("tutaj totalnie nic sie nie dzieje");
+//						stan="wychodzenie";
+//					}
 				}
 				else
 				{
@@ -143,15 +159,13 @@ public class Kupujacy extends Thread
 						stan="czekanie";
 					}
 					
-					else 
-					{
-						komunikat("tutaj totalnie nic sie nie dzieje");
-						stan="wychodzenie";
-					}
+//					else 
+//					{
+//						komunikat("tutaj totalnie nic sie nie dzieje");
+//						stan="wychodzenie";
+//					}
 				}
 			}
 		}		
 	}
 }
-	
-
