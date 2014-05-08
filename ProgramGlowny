@@ -8,7 +8,6 @@ public class ProgramGlowny
 {
 	static int miejsca = 0;
 	static int zwiedzajacy = 0;
-	static int ilosc_paczkow = 0;
 	
 	static int CZAS=1000;
 	
@@ -27,16 +26,15 @@ public class ProgramGlowny
 				System.out.print("Czas Jedzenia: ");
 				Kupujacy.CzasJedzenia = Integer.valueOf(input.readLine());
 				System.out.println("Ilość dostarczanych pączków w 1s: ");
-//				DostawcaPaczków.ilosc_paczkow = Integer.valueOf(input.readLine());
-				ilosc_paczkow = Integer.valueOf(input.readLine());
+				Kupujacy.ilosc_paczkow = Integer.valueOf(input.readLine());			
 			} 
 			catch(Exception e)
 			{
 				System.out.println(e.toString());
 				System.exit(1);
 			}
-		
-		Cukiernia kupujacy_cukiernia = new Cukiernia(miejsca, miejsca, ilosc_paczkow);
+
+			Cukiernia kupujacy_cukiernia = new Cukiernia(miejsca, miejsca, Kupujacy.ilosc_paczkow);
 		for (int i = 0; i < zwiedzajacy; i++)
 		{
 			new Kupujacy(String.format("zwiedzający #%03d", i + 1),
